@@ -6,10 +6,13 @@ var server = dgram.createSocket('udp4');
 var parsers = require("cmmc-parsers")
 const axios = require('axios'); 
 const mqtt = require('cmmc-mqtt').mqtt
-
-var cmmc = require('mqtt').connect('mqtt://cmmc.io')
-cmmc.on('connect', function () { console.log('cmmc connected') })
-cmmc.on('packetsend', function(packet) { console.log(packet); });
+var cmmc = require('mqtt').connect('mqtt://mqtt.cmmc.io')
+cmmc.on('connect', function () {
+  console.log('cmmc connected')
+})
+cmmc.on('packetsend', function(packet) {
+  console.log(packet);
+});
 
 var counter = 0;
 
@@ -19,8 +22,8 @@ setInterval(function() {
 }, 1000);
 
 server.on('listening', function () {
-  var address = server.address();
-  console.log(new Date() + ' - UDP Server listening on ' + address.address + ":" + address.port);
+    var address = server.address();
+    console.log(new Date() + ' - UDP Server listening on ' + address.address + ":" + address.port);
   var address = server.address();
   var port = address.port;
   var family = address.family;

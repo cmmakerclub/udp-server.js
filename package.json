@@ -1,0 +1,25 @@
+{
+  "name": "udp-nb-iot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "udp.js",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "cmmc-mqtt": "^0.1.6",
+    "cmmc-parsers": "0.0.12"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmmakerclub/udp-server.js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cmmakerclub/udp-server.js/issues"
+  },
+  "homepage": "https://github.com/cmmakerclub/udp-server.js#readme"
+}

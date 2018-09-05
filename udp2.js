@@ -40,30 +40,11 @@ server.on('close', function() {
 
 server.on('message', function (message, remote) {
     counter++;
-    //console.log('Data received from client : ' + message.toString());
+    console.log('Data received from client : ' + message.toString());
     console.log('data comming...');
     console.log('Received %d bytes from %s:%d\n', message.length, remote.address, remote.port); 
-    
-    var inByte = Buffer.from(message);
-    axios({
-      method: 'post',
-      url: 'https://us-central1-cmmc-iot-cloud-fn.cloudfunctions.net/nb_iot',
-      data: {message: inByte.toString('hex')}
-    })
-    .then(function (response) {
-      //console.log('post response', response.data);
-    });
-
-
+    var inByte = Buffer.from(message); 
     console.log(Buffer.from(message).toString('hex'));
-    var p = parsers.header.parse(inByte);
-    const row = Object.assign({}, p);
-    //delete row.header;
-    //delete row.reserved;
-    //delete row.cmmc_packet.header;
-    //delete row.cmmc_packet.reserved;
-    console.log(row) 
-    cmmc.publish(`CMMC/NB-IOT/${p.cmmc_packet.sensor_node.to}/${p.cmmc_packet.sensor_node.device_name}/status`, JSON.stringify(row), { retain: true})
 });
 
 server.bind(PORT, HOST); 

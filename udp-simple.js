@@ -53,10 +53,6 @@ server.on('message', function(message, remote) {
   let b = Buffer.from(`${++data_sent_counter * 1000}`);
   console.log(`sent `, b);
   sockets[`${host}-${port}`] = {host, port};
-  //client.send(inByte, port, host, function(err, bytes) {
-  //  console.log('sent1')
-  //});
-  console.log(typeof inByte);
   client.send(b, port, host, function(err, bytes) {
     if (err) {
       console.log(error);
@@ -66,18 +62,6 @@ server.on('message', function(message, remote) {
           ' (bytes) <-- UDP message sent to ' + host + ':' + port);
     }
   });
-  //setInterval(() => {
-  //  for (let value of Object.values(sockets)) {
-  //   client.send(inByte, value.port, value.host, function(err, bytes) {
-  //        if (err)  {
-  //            console.log(error);
-  //        }
-  //        else {
-  //          console.log(inByte.toString() + ' <-- UDP message sent to ' + value.host + ':'+ value.port);
-  //        }
-  //    });
-  //  }
-  //}, 5000);
 });
 
 server.bind(PORT, HOST); 

@@ -51,7 +51,7 @@ server.on('message', function(message, remote) {
   let host = remote.address;
   let port = remote.port;
   let b = Buffer.from(`${++data_sent_counter * 1000}`);
-  console.log(`sent `, b);
+
   sockets[`${host}-${port}`] = {host, port};
   client.send(b, port, host, function(err, bytes) {
     if (err) {
